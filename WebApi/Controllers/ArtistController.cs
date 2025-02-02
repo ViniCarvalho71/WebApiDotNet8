@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Dto.Artist;
 using WebApi.Models;
 using WebApi.Services.Artist;
 
@@ -25,9 +26,38 @@ namespace WebApi.Controllers
         [HttpGet("GetArtistById/{idArtist}")]
 
         public async Task<ActionResult<ResponseModel<ArtistModel>>> GetArtistById(int idArtist){
-            var artist = await _artistInterface.SearchArtistById(idArtist);
+            var artists = await _artistInterface.SearchArtistById(idArtist);
 
-            return Ok(artist);
+            return Ok(artists);
+        }
+
+        [HttpGet("GetArtistiByTattooId/{idTattoo}")]
+
+        public async Task<ActionResult<ResponseModel<ArtistModel>>> GetArtistiByTattooId(int idTattoo)
+        {
+            var artists = await _artistInterface.SearchArtistByTattooId(idTattoo);
+
+            return Ok(artists);
+        }
+        [HttpPost("CreateArtist")]
+        public async Task<ActionResult<ResponseModel<List<ArtistModel>>>> CreateArtist(ArtistCreationDto artistCreationDto)
+        {
+            var artists = await _artistInterface.CreateArtist(artistCreationDto);
+            return Ok(artists);
+        }
+
+        [HttpPut("EditArtist")]
+        public async Task<ActionResult<ResponseModel<List<ArtistModel>>>> EdtiArtist(ArtistEditionDto artistEditionDto)
+        {
+            var artists = await _artistInterface.EditArtist(artistEditionDto);
+            return Ok(artists);
+        }
+
+        [HttpDelete("DeleteArtist/{idArtist}")]
+        public async Task<ActionResult<ResponseModel<List<ArtistModel>>>> DeleteArtist(int idArtist)
+        {
+            var artists = await _artistInterface.DeleteArtist(idArtist);
+            return Ok(artists);
         }
     }
 }
