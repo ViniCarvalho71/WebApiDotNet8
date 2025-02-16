@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Services.Artist;
+using WebApi.Services.Tattoo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IArtistInterface, ArtistService>();
+builder.Services.AddScoped<ITattooInterface, TattooService>();
 
 builder.Services.AddDbContext<AppDbContext>(option =>
 {

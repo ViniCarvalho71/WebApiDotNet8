@@ -33,7 +33,7 @@ namespace WebApi.Controllers
 
         [HttpGet("GetArtistiByTattooId/{idTattoo}")]
 
-        public async Task<ActionResult<ResponseModel<ArtistModel>>> GetArtistiByTattooId(int idTattoo)
+        public async Task<ActionResult<ResponseModel<ArtistModel>>> GetArtistByTattooId(int idTattoo)
         {
             var artists = await _artistInterface.SearchArtistByTattooId(idTattoo);
 
