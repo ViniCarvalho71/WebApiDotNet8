@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WebApi.Data;
 using WebApi.Dto.Artist;
 using WebApi.Models;
@@ -20,7 +21,7 @@ namespace WebApi.Services.Artist
                 
                 var artists = await _context.Artist.ToListAsync();
                 response.Data = artists;
-                response.Message = "Success";
+                response.Message = $"Success {(ClaimsPrincipal user) => user.Identity!.Name}";
 
                 return response;
 
@@ -108,7 +109,7 @@ namespace WebApi.Services.Artist
                 await _context.SaveChangesAsync();
 
                 response.Data = await _context.Artist.ToListAsync();
-                response.Message = "Success";
+                response.Message = $"Success";
                 return response;
             } catch(Exception ex)
             {

@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Models;
 
 namespace WebApi.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext(DbContextOptions options) : IdentityDbContext<ApplicationUser>(options)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<ArtistModel> Artist { get; set; }
         public DbSet<TattooModel> Tattoo { get; set; }
