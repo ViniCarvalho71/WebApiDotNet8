@@ -1,8 +1,8 @@
-# Documentação da API - Projeto XYZ
+# Documentação da API - WebApiDotNet8
 
 ## Visão Geral
 
-Esta é uma API RESTful desenvolvida com .NET 8. O projeto tem como objetivo fornecer um conjunto de serviços para gerenciar **[insira o nome do domínio ou área de negócio]**, permitindo operações como **[descrição geral das funcionalidades]**.
+Esta é uma API RESTful desenvolvida com .NET 8. O projeto tem como objetivo fornecer um conjunto de serviços para gerenciar a relação entre tatuadores e seu clientes, permitindo operações como criar, deletar, atualizar e vizualizar, e conta com um sistema de login utilizando cookies.
 
 A API foi projetada para ser segura, escalável e eficiente, utilizando as melhores práticas de desenvolvimento de APIs RESTful e os recursos mais recentes do .NET 8.
 
@@ -15,12 +15,7 @@ A API foi projetada para ser segura, escalável e eficiente, utilizando as melho
 - **Entity Framework Core** - ORM utilizado para interagir com o banco de dados.
 - **SQL Server / PostgreSQL** - Banco de dados relacional (especificar qual foi usado).
 - **Swagger** - Para documentação interativa da API.
-- **JWT (JSON Web Tokens)** - Para autenticação e autorização.
-- **AutoMapper** - Para mapeamento de objetos.
-- **Serilog** - Para logging.
-- **FluentValidation** - Para validação de entradas.
-- **XUnit** - Para testes automatizados.
-
+- **Identity** - Para autênticação
 ---
 
 ## Estrutura do Projeto
@@ -33,8 +28,6 @@ A API foi projetada para ser segura, escalável e eficiente, utilizando as melho
 - **Data**: Contém a configuração do banco de dados e contexto do Entity Framework.
 - **Dtos**: Contém os objetos de transferência de dados (Data Transfer Objects).
 - **Migrations**: Contém as migrações do banco de dados.
-- **Helpers**: Contém utilitários auxiliares como validações, mapeamentos, etc.
-- **Middlewares**: Contém componentes de middleware personalizados para tratamento de erros, autenticação, etc.
 
 ---
 
@@ -55,3 +48,17 @@ A API foi projetada para ser segura, escalável e eficiente, utilizando as melho
    git clone https://github.com/ViniCarvalho71/WebApiDotNet8
    cd projeto-api-dotnet8
    ```
+
+2. Restaure as dependências
+    ```bash
+   dotnet restore
+   ```
+3. Crie e aplique as migrações
+    ```bash
+   dotnet ef database update
+   ```
+4. Execute o projeto:
+   ```bash
+   dotnet run
+   ```
+   
